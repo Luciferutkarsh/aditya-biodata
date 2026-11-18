@@ -4,880 +4,371 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bio Data | Aditya Ankur</title>
+    <title>Marriage Biodata | Aditya Ankur</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap"
         rel="stylesheet">
     <style>
         :root {
-            /* Light Mode Variables (AUTUMN ELEGANCE) */
-            --bg-color: #fcf9f2;
-            /* Warm Cream */
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --text-primary: #3e2723;
-            --text-secondary: #5d4037;
-            --accent-gold: #bcaaa4;
-            /* Muted Gold/Taupe */
-            --accent-highlight: #d84315;
-            /* Rust Orange */
-            --border-color: #efebe9;
-            --shadow-soft: 0 20px 60px rgba(62, 39, 35, 0.08);
-            /* Minimal shadow */
-            --ganesha-glow: none;
-            --moon-opacity: 0;
-            --star-opacity: 0;
-            --card-border: 1px solid #fff;
-            --pattern-color: #e7e0d3;
-        }
-
-        [data-theme="dark"] {
-            /* Dark Mode Variables (COSMIC FUN) */
-            --bg-color: #0f172a;
-            --card-bg: rgba(15, 23, 42, 0.75);
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --accent-gold: #fbbf24;
-            --accent-highlight: #38bdf8;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.6);
-            --ganesha-glow: drop-shadow(0 0 15px rgba(251, 191, 36, 0.5));
-            --moon-opacity: 1;
-            --star-opacity: 0.8;
-            --card-border: 1px solid rgba(255, 255, 255, 0.1);
-            --pattern-color: transparent;
+            --paper: #fffaf0;
+            --ink: #2b1d14;
+            --muted: #5a4636;
+            --accent: #8b1a1a;
+            --gold: #c9a227;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.6s ease, color 0.4s ease;
         }
 
         body {
-            font-family: 'Lato', sans-serif;
-            background-color: var(--bg-color);
-            background-image: radial-gradient(var(--pattern-color) 1px, transparent 1px);
-            background-size: 40px 40px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
-            position: relative;
+            font-family: 'Noto Sans', 'Noto Sans Devanagari', sans-serif;
+            background: #ece6da;
+            color: var(--ink);
+            padding: 16px;
         }
 
-        /* --- Decoration (Light Mode) --- */
-
-        .leaf {
-            position: fixed;
-            z-index: -1;
-            pointer-events: none;
-            /* CRITICAL FIX: Multiply blend mode makes white background transparent */
-            mix-blend-mode: multiply;
-            opacity: 0.85;
-            transition: opacity 0.5s ease;
-        }
-
-        [data-theme="dark"] .leaf {
-            opacity: 0;
-            display: none;
-        }
-
-        /* Elegant Corner Positions */
-
-        /* Roaming Leaf Animation */
-        @keyframes roam-leaf-1 {
-            0% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                opacity: 0.85;
-            }
-
-            25% {
-                transform: translate(30vw, 20vh) rotate(90deg) scale(0.9);
-                opacity: 0.7;
-            }
-
-            50% {
-                transform: translate(20vw, 50vh) rotate(180deg) scale(1.1);
-                opacity: 0.85;
-            }
-
-            75% {
-                transform: translate(-10vw, 30vh) rotate(270deg) scale(0.95);
-                opacity: 0.75;
-            }
-
-            100% {
-                transform: translate(0, 0) rotate(360deg) scale(1);
-                opacity: 0.85;
-            }
-        }
-
-        @keyframes roam-leaf-2 {
-            0% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                opacity: 0.85;
-            }
-
-            25% {
-                transform: translate(-25vw, 15vh) rotate(-90deg) scale(1.05);
-                opacity: 0.75;
-            }
-
-            50% {
-                transform: translate(-15vw, 45vh) rotate(-180deg) scale(0.9);
-                opacity: 0.8;
-            }
-
-            75% {
-                transform: translate(15vw, 25vh) rotate(-270deg) scale(1.1);
-                opacity: 0.7;
-            }
-
-            100% {
-                transform: translate(0, 0) rotate(-360deg) scale(1);
-                opacity: 0.85;
-            }
-        }
-
-        .leaf-top-left {
-            top: 5%;
-            left: 5%;
-            width: 200px;
-            animation: roam-leaf-1 10s ease-in-out infinite;
-            will-change: transform, opacity;
-        }
-
-        .leaf-bottom-right {
-            bottom: 5%;
-            right: 5%;
-            width: 250px;
-            animation: roam-leaf-2 12s ease-in-out infinite;
-            will-change: transform, opacity;
-        }
-
-        /* Additional Leaf Animations */
-        @keyframes roam-leaf-3 {
-            0% {
-                transform: translate(0, 0) rotate(45deg) scale(0.8);
-                opacity: 0.7;
-            }
-
-            33% {
-                transform: translate(15vw, -20vh) rotate(135deg) scale(1);
-                opacity: 0.85;
-            }
-
-            66% {
-                transform: translate(-20vw, 10vh) rotate(225deg) scale(0.9);
-                opacity: 0.75;
-            }
-
-            100% {
-                transform: translate(0, 0) rotate(405deg) scale(0.8);
-                opacity: 0.7;
-            }
-        }
-
-        @keyframes roam-leaf-4 {
-            0% {
-                transform: translate(0, 0) rotate(-30deg) scale(1.1);
-                opacity: 0.8;
-            }
-
-            40% {
-                transform: translate(25vw, 30vh) rotate(-150deg) scale(0.85);
-                opacity: 0.7;
-            }
-
-            80% {
-                transform: translate(10vw, -15vh) rotate(-270deg) scale(1);
-                opacity: 0.85;
-            }
-
-            100% {
-                transform: translate(0, 0) rotate(-390deg) scale(1.1);
-                opacity: 0.8;
-            }
-        }
-
-        @keyframes roam-leaf-5 {
-            0% {
-                transform: translate(0, 0) rotate(60deg) scale(0.95);
-                opacity: 0.75;
-            }
-
-            30% {
-                transform: translate(-30vw, 25vh) rotate(180deg) scale(1.05);
-                opacity: 0.8;
-            }
-
-            70% {
-                transform: translate(-10vw, -20vh) rotate(300deg) scale(0.9);
-                opacity: 0.7;
-            }
-
-            100% {
-                transform: translate(0, 0) rotate(420deg) scale(0.95);
-                opacity: 0.75;
-            }
-        }
-
-        .leaf-center {
-            top: 40%;
-            left: 50%;
-            width: 180px;
-            animation: roam-leaf-3 9s ease-in-out infinite;
-            animation-delay: 1s;
-            will-change: transform, opacity;
-        }
-
-        .leaf-mid-left {
-            top: 30%;
-            left: 10%;
-            width: 220px;
-            animation: roam-leaf-4 11s ease-in-out infinite;
-            animation-delay: 1.5s;
-            will-change: transform, opacity;
-        }
-
-        .leaf-mid-right {
-            top: 60%;
-            right: 8%;
-            width: 190px;
-            animation: roam-leaf-5 8s ease-in-out infinite;
-            animation-delay: 2s;
-            will-change: transform, opacity;
-        }
-
-        /* --- Dark Mode Background --- */
-
-        .moon-bg {
-            position: absolute;
-            top: 50px;
-            right: 100px;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle at 40% 40%, #fff, #f0f0f0 40%, #ddd 80%);
-            border-radius: 50%;
-            box-shadow: 0 0 80px rgba(255, 255, 255, 0.4);
-            opacity: var(--moon-opacity);
-            transform: translateY(0);
-            transition: all 1s ease;
-            z-index: -1;
-        }
-
-        .stars {
-            position: absolute;
-            inset: 0;
-            background-image:
-                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0, 0, 0, 0)),
-                radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0)),
-                radial-gradient(2px 2px at 130px 80px, #fff, rgba(0, 0, 0, 0));
-            background-repeat: repeat;
-            background-size: 200px 200px;
-            opacity: var(--star-opacity);
-            transition: opacity 1s ease;
-            z-index: -2;
-            animation: twinkle 5s infinite alternate;
-        }
-
-        @keyframes twinkle {
-            0% {
-                opacity: 0.5;
-            }
-
-            100% {
-                opacity: 0.9;
-            }
-        }
-
-        /* --- Main Card --- */
-
-        .card-container {
-            width: 90%;
-            max-width: 900px;
-            background: var(--card-bg);
-            /* Soft glass effect */
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 20px;
-            box-shadow: var(--shadow-soft);
-            border: var(--card-border);
-            padding: 60px;
-            position: relative;
-        }
-
-        .header {
+        /* Download button */
+        .toolbar {
+            max-width: 794px;
+            margin: 0 auto 16px;
             text-align: center;
-            margin-bottom: 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
-        .ganesha-img {
-            width: 120px;
-            /* Reduced for elegance */
-            height: auto;
-            margin-bottom: 15px;
-            filter: var(--ganesha-glow);
-            mix-blend-mode: multiply;
-            /* Fixes white box */
-            transition: filter 0.5s ease;
-        }
-
-        [data-theme="dark"] .ganesha-img {
-            mix-blend-mode: normal;
-            /* In dark mode, we rely on the image's own contrast or glow */
-            /* Since we don't have a transparent PNG, we might see a box in dark mode. 
-               We simply reduce opacity or accept it as a "framed" icon if blend fails.
-               Ideally, we'd use a transparent PNG, but for now we optimize for light mode. */
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-        }
-
-        .title {
-            font-family: 'Cinzel', serif;
-            font-size: 3.2rem;
-            color: var(--text-primary);
-            letter-spacing: 3px;
-            font-weight: 500;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-
-        .subtitle {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--accent-highlight);
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .subtitle::before,
-        .subtitle::after {
-            content: "";
-            display: inline-block;
-            width: 30px;
-            height: 1px;
-            background: var(--accent-highlight);
-            vertical-align: middle;
-            margin: 0 10px;
-            opacity: 0.5;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1.6fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        /* Section Styles */
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section-header {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            border-bottom: 2px solid var(--accent-gold);
-            /* Thicker, softer border */
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+        .download-btn {
+            font-family: inherit;
+            font-size: 1.15rem;
             font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .data-row {
-            display: flex;
-            margin-bottom: 14px;
-            font-size: 1.05rem;
-            line-height: 1.6;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .data-row:hover {
-            background: rgba(212, 67, 21, 0.05);
-            transform: translateX(5px);
-        }
-
-        [data-theme="dark"] .data-row:hover {
-            background: rgba(56, 189, 248, 0.1);
-        }
-
-        .label {
-            width: 40%;
-            font-weight: 600;
-            color: var(--text-secondary);
-            font-family: 'Lato', sans-serif;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-        }
-
-        .value {
-            width: 60%;
-            font-weight: 400;
-            color: var(--text-primary);
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .action-btn {
-            padding: 12px 30px;
-            border-radius: 25px;
-            border: 2px solid var(--accent-highlight);
-            background: transparent;
-            color: var(--accent-highlight);
-            font-family: 'Lato', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .action-btn:hover {
-            background: var(--accent-highlight);
             color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 67, 21, 0.3);
-        }
-
-        [data-theme="dark"] .action-btn:hover {
-            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.3);
-        }
-
-        .action-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Photo Column */
-        .photo-column {
-            display: flex;
-            justify-content: center;
-            padding-top: 15px;
-        }
-
-        .photo-frame {
-            position: relative;
-            width: 100%;
-            max-width: 300px;
-            aspect-ratio: 3/4;
-            border-radius: 4px;
-            /* Sharper, more modern corners */
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            background: #fff;
-            padding: 8px;
-            /* White border effect */
-            transform: rotate(2deg);
-            transition: all 0.5s ease;
-        }
-
-        .card-container:hover .photo-frame {
-            transform: rotate(0deg) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 2px;
-        }
-
-        /* Theme Toggle */
-        .toggle-btn {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background: none;
-            border: 1px solid var(--text-secondary);
-            padding: 10px;
-            border-radius: 50%;
+            background: var(--accent);
+            border: none;
+            border-radius: 10px;
+            padding: 14px 28px;
             cursor: pointer;
-            z-index: 100;
-            opacity: 0.6;
-            transition: opacity 0.3s;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .toggle-btn:hover {
-            opacity: 1;
-            background: rgba(0, 0, 0, 0.05);
+        .download-btn:hover {
+            background: #6e1414;
         }
 
-        /* Mobile & Tablet Responsive */
-        @media (max-width: 768px) {
-            .content-grid {
+        .download-btn:disabled {
+            opacity: 0.7;
+            cursor: wait;
+        }
+
+        .hint {
+            margin-top: 6px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        /* A4 sheet */
+        .sheet {
+            max-width: 794px;
+            margin: 0 auto;
+            background: var(--paper);
+            padding: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .frame {
+            border: 3px double var(--gold);
+            outline: 1px solid var(--gold);
+            outline-offset: 4px;
+            padding: 22px 30px 26px;
+        }
+
+        .top {
+            text-align: center;
+        }
+
+        .ganesha {
+            width: 60px;
+            height: auto;
+            mix-blend-mode: multiply;
+        }
+
+        .mantra {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 2px;
+        }
+
+        .doc-title {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.9rem;
+            color: var(--accent);
+            margin-top: 4px;
+        }
+
+        .name {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin: 14px 0 4px;
+        }
+
+        .intro {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .intro .rows {
+            flex: 1;
+        }
+
+        .photo {
+            width: 170px;
+            flex-shrink: 0;
+            border: 3px solid var(--gold);
+            padding: 3px;
+            background: #fff;
+        }
+
+        .photo img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+        }
+
+        h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 3px;
+            margin: 14px 0 6px;
+        }
+
+        h2 .hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--muted);
+            margin-left: 6px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 180px 14px 1fr;
+            font-size: 1.02rem;
+            line-height: 1.45;
+            padding: 2px 0;
+        }
+
+        .row .k {
+            font-weight: 700;
+        }
+
+        .row .c {
+            font-weight: 700;
+        }
+
+        .row .v {
+            color: var(--ink);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 16px;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Phone layout */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .frame {
+                padding: 16px 14px 18px;
+            }
+
+            .intro {
+                flex-direction: column-reverse;
+                align-items: center;
+            }
+
+            .intro .rows {
+                width: 100%;
+            }
+
+            .photo {
+                width: 150px;
+            }
+
+            .row {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                padding: 4px 0;
+                border-bottom: 1px dashed #e3d7c3;
             }
 
-            .photo-column {
-                order: -1;
-            }
-
-            .card-container {
-                padding: 25px;
-                width: 95%;
-                border-radius: 16px;
-            }
-
-            .title {
-                font-size: 2rem;
-                letter-spacing: 2px;
-            }
-
-            .subtitle {
-                font-size: 0.8rem;
-                letter-spacing: 3px;
-            }
-
-            .section-header {
-                font-size: 1.3rem;
-            }
-
-            .data-row {
-                font-size: 0.95rem;
-                flex-direction: column;
-                margin-bottom: 12px;
-            }
-
-            .label {
-                width: 100%;
-                margin-bottom: 4px;
-                font-size: 0.85rem;
-            }
-
-            .value {
-                width: 100%;
-                font-size: 0.95rem;
-            }
-
-            .photo-frame {
-                max-width: 250px;
-                transform: rotate(0deg);
-            }
-
-            .ganesha-img {
-                width: 80px;
-            }
-
-            /* Smaller, less intrusive leaves on mobile */
-            .leaf {
-                width: 120px !important;
-                opacity: 0.5;
-            }
-
-            .leaf-top-left {
-                top: 2%;
-                left: 2%;
-            }
-
-            .leaf-bottom-right {
-                bottom: 2%;
-                right: 2%;
-            }
-
-            /* Simpler animation on mobile for performance */
-            @keyframes roam-leaf-mobile {
-
-                0%,
-                100% {
-                    transform: translate(0, 0) rotate(0deg);
-                    opacity: 0.4;
-                }
-
-                50% {
-                    transform: translate(10vw, 10vh) rotate(180deg);
-                    opacity: 0.5;
-                }
-            }
-
-            .leaf-top-left,
-            .leaf-bottom-right,
-            .leaf-center,
-            .leaf-mid-left,
-            .leaf-mid-right {
-                animation: roam-leaf-mobile 20s ease-in-out infinite;
-            }
-
-            /* Hide center leaf on mobile to reduce clutter */
-            .leaf-center {
+            .row .c {
                 display: none;
             }
 
-            .toggle-btn {
-                top: 15px;
-                right: 15px;
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
+            .row .k {
+                font-size: 0.9rem;
+                color: var(--muted);
             }
         }
 
-        /* Extra small devices */
-        @media (max-width: 480px) {
-            .card-container {
-                padding: 20px;
-            }
-
-            .title {
-                font-size: 1.6rem;
-            }
-
-            .section {
-                margin-bottom: 25px;
-            }
-
-            .photo-frame {
-                max-width: 200px;
-            }
+        /* Fixed A4 layout used for the PDF, regardless of screen size */
+        body.pdf-mode .sheet {
+            width: 794px;
+            max-width: none;
+            box-shadow: none;
         }
 
-        /* Print Styles */
+        body.pdf-mode .intro {
+            flex-direction: row;
+            align-items: flex-start;
+        }
+
+        body.pdf-mode .photo {
+            width: 170px;
+        }
+
+        body.pdf-mode .row {
+            grid-template-columns: 180px 14px 1fr;
+            padding: 2px 0;
+            border-bottom: none;
+        }
+
+        body.pdf-mode .row .c {
+            display: block;
+        }
+
+        body.pdf-mode .row .k {
+            font-size: 1.02rem;
+            color: var(--ink);
+        }
+
+        body.pdf-mode .frame {
+            padding: 22px 30px 26px;
+        }
+
+        @page {
+            size: A4;
+            margin: 8mm;
+        }
+
         @media print {
             body {
-                background: white !important;
+                background: none;
+                padding: 0;
             }
 
-            .stars,
-            .moon-bg,
-            .leaf,
-            .toggle-btn,
-            .action-buttons {
-                display: none !important;
+            .toolbar {
+                display: none;
             }
 
-            .card-container {
-                box-shadow: none !important;
-                border: 2px solid #ddd;
-                page-break-inside: avoid;
-            }
-
-            .content-grid {
-                grid-template-columns: 2fr 1fr;
-            }
-
-            .photo-column {
-                order: 2;
-            }
-
-            .data-row {
-                page-break-inside: avoid;
-                padding: 4px 0;
-            }
-
-            .section {
-                page-break-inside: avoid;
+            .sheet {
+                box-shadow: none;
+                max-width: none;
+                zoom: 0.92;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
             }
         }
     </style>
 </head>
 
-<body data-theme="light">
+<body>
 
-    <!-- Elements -->
-    <div class="stars"></div>
-    <div class="moon-bg"></div>
+    <div class="toolbar">
+        <button class="download-btn" id="downloadBtn" onclick="downloadPDF()">⬇ Download PDF</button>
+        <div class="hint">PDF डाउनलोड करने के लिए ऊपर बटन दबाएँ</div>
+    </div>
 
-    <!-- Leaves with Multiply Blend Mode -->
-    <img src="./autumn_leaf.png" class="leaf leaf-top-left" id="leaf1" alt="decor">
-    <img src="./autumn_leaf.png" class="leaf leaf-bottom-right" id="leaf2" alt="decor">
-    <img src="./autumn_leaf.png" class="leaf leaf-center" id="leaf3" alt="decor">
-    <img src="./autumn_leaf.png" class="leaf leaf-mid-left" id="leaf4" alt="decor">
-    <img src="./autumn_leaf.png" class="leaf leaf-mid-right" id="leaf5" alt="decor">
-
-    <button class="toggle-btn" onclick="toggleTheme()" id="themeBtn">☀️</button>
-
-    <div class="card-container">
-        <div class="header">
-            <img src="./ganesha.png" alt="Shree Ganesha" class="ganesha-img">
-            <h1 class="title">Aditya Ankur</h1>
-            <div class="subtitle">Personal Profile</div>
-        </div>
-
-        <div class="content-grid">
-            <div class="details-column">
-
-                <div class="section">
-                    <div class="section-header">Personal Details</div>
-                    <div class="data-row">
-                        <span class="label">Date of Birth</span>
-                        <span class="value">14th February 2000</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Time</span>
-                        <span class="value">06:45 AM</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Place of Birth</span>
-                        <span class="value">Samastipur, Bihar</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Zodiac Sign</span>
-                        <span class="value">Aries (Mesh Rashi)</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Height</span>
-                        <span class="value">5' 10"</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Complexion</span>
-                        <span class="value">Fair / Wheatish</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Caste</span>
-                        <span class="value">Rauniyar Baniya</span>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-header">Education & Career</div>
-                    <div class="data-row">
-                        <span class="label">Degree</span>
-                        <span class="value">B.Tech (Computer Science)</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">College</span>
-                        <span class="value">AKTU University</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Profession</span>
-                        <span class="value">Software Engineer</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Organization</span>
-                        <span class="value">Quest Global, Bengaluru</span>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-header">Hobbies & Interests</div>
-                    <div class="data-row">
-                        <span class="label">Interests</span>
-                        <span class="value">Technology, Reading, Travel, Music</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Sports</span>
-                        <span class="value">Cricket, Badminton</span>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-header">Family Details & Background</div>
-                    <div class="data-row">
-                        <span class="label">Father's Name</span>
-                        <span class="value">Mr. Ajay Kumar Gupta (Reputed Businessman)</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Mother's Name</span>
-                        <span class="value">Mrs. Payal (Homemaker)</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Brother</span>
-                        <span class="value">Utkarsh Umang (Younger)</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Edu & Profession</span>
-                        <span class="value">M.Tech (AI & DS) from IIT Patna<br>SWE III at Google </span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Family Values</span>
-                        <span class="value">Nuclear, Traditional, Well-Educated</span>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-header">Contact</div>
-                    <div class="data-row">
-                        <span class="label">Mobile</span>
-                        <span class="value">+91 9955761249</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Location</span>
-                        <span class="value">Bengaluru (Current) / Noida / Bihar</span>
-                    </div>
-                </div>
-
+    <div class="sheet" id="biodata">
+        <div class="frame">
+            <div class="top">
+                <img src="./ganesha.png" alt="Shree Ganesha" class="ganesha">
+                <div class="mantra">॥ श्री गणेशाय नमः ॥</div>
+                <div class="doc-title">Marriage Biodata</div>
             </div>
 
-            <div class="photo-column">
-                <div class="photo-frame">
-                    <img src="./profile.png" alt="Aditya Ankur" class="profile-img">
+            <div class="name">Aditya Ankur</div>
+
+            <div class="intro">
+                <div class="rows">
+                    <h2>Personal Details <span class="hi">व्यक्तिगत विवरण</span></h2>
+                    <div class="row"><span class="k">Date of Birth</span><span class="c">:</span><span class="v">14 February 2000</span></div>
+                    <div class="row"><span class="k">Time of Birth</span><span class="c">:</span><span class="v">06:45 AM</span></div>
+                    <div class="row"><span class="k">Place of Birth</span><span class="c">:</span><span class="v">Samastipur, Bihar</span></div>
+                    <div class="row"><span class="k">Rashi</span><span class="c">:</span><span class="v">Mesh (Aries)</span></div>
+                    <div class="row"><span class="k">Height</span><span class="c">:</span><span class="v">5' 9"</span></div>
+                    <div class="row"><span class="k">Complexion</span><span class="c">:</span><span class="v">Fair / Wheatish</span></div>
+                    <div class="row"><span class="k">Caste</span><span class="c">:</span><span class="v">Rauniyar Baniya</span></div>
+                </div>
+                <div class="photo">
+                    <img src="./profile.jpg" alt="Aditya Ankur">
                 </div>
             </div>
+
+            <h2>Education &amp; Job <span class="hi">शिक्षा एवं नौकरी</span></h2>
+            <div class="row"><span class="k">Education</span><span class="c">:</span><span class="v">B.Tech (Computer Science), AKTU</span></div>
+            <div class="row"><span class="k">Profession</span><span class="c">:</span><span class="v">Software Engineer</span></div>
+            <div class="row"><span class="k">Company</span><span class="c">:</span><span class="v">Quest Global, Bengaluru</span></div>
+            <div class="row"><span class="k">Hobbies</span><span class="c">:</span><span class="v">Technology, Reading, Travel, Music, Cricket, Badminton</span></div>
+
+            <h2>Family Details <span class="hi">पारिवारिक विवरण</span></h2>
+            <div class="row"><span class="k">Father's Name</span><span class="c">:</span><span class="v">Mr. Ajay Kumar Gupta</span></div>
+            <div class="row"><span class="k">Father's Occupation</span><span class="c">:</span><span class="v">Reputed Businessman</span></div>
+            <div class="row"><span class="k">Mother's Name</span><span class="c">:</span><span class="v">Mrs. Payal</span></div>
+            <div class="row"><span class="k">Mother's Occupation</span><span class="c">:</span><span class="v">Homemaker</span></div>
+            <div class="row"><span class="k">Brother</span><span class="c">:</span><span class="v">Utkarsh Umang (Younger) – M.Tech (AI &amp; DS), IIT Patna; SWE III at Google</span></div>
+            <div class="row"><span class="k">Family Type</span><span class="c">:</span><span class="v">Nuclear, Traditional, Well-Educated</span></div>
+
+            <h2>Contact Details <span class="hi">संपर्क</span></h2>
+            <div class="row"><span class="k">Mobile</span><span class="c">:</span><span class="v">+91 99557 61249</span></div>
+            <div class="row"><span class="k">Current Address</span><span class="c">:</span><span class="v">Bengaluru</span></div>
+            <div class="row"><span class="k">Family Address</span><span class="c">:</span><span class="v">Samastipur, Bihar</span></div>
+
+            <div class="footer">॥ शुभ विवाह ॥</div>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
-        const themeBtn = document.getElementById('themeBtn');
-        const body = document.body;
-        let isDarkMode = false;
-
-        function toggleTheme() {
-            isDarkMode = !isDarkMode;
-            if (isDarkMode) {
-                body.setAttribute('data-theme', 'dark');
-                themeBtn.textContent = '🌙';
-            } else {
-                body.setAttribute('data-theme', 'light');
-                themeBtn.textContent = '☀️';
+        function downloadPDF() {
+            // If the PDF library could not load, fall back to the browser's "Save as PDF"
+            if (typeof html2pdf === 'undefined') {
+                window.print();
+                return;
             }
-        }
+            const btn = document.getElementById('downloadBtn');
+            btn.disabled = true;
+            btn.textContent = 'Preparing PDF...';
+            document.body.classList.add('pdf-mode');
+            window.scrollTo(0, 0);
 
-        // Share Profile Function
-        function shareProfile() {
-            const url = window.location.href;
-
-            if (navigator.share) {
-                // Use native share API if available (mobile)
-                navigator.share({
-                    title: 'Bio-Data - Aditya Ankur',
-                    text: 'View my bio-data profile',
-                    url: url
-                }).catch(err => console.log('Share cancelled'));
-            } else {
-                // Fallback: Copy to clipboard
-                navigator.clipboard.writeText(url).then(() => {
-                    alert('✅ Profile link copied to clipboard!\n\nYou can now share it via WhatsApp, Email, or any messaging app.');
-                }).catch(() => {
-                    // Fallback for older browsers
-                    const textArea = document.createElement('textarea');
-                    textArea.value = url;
-                    document.body.appendChild(textArea);
-                    textArea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textArea);
-                    alert('✅ Profile link copied to clipboard!');
-                });
-            }
-        }
-
-        // Print / Save as PDF Function
-        function printProfile() {
-            window.print();
+            html2pdf().set({
+                margin: 0,
+                filename: 'Aditya_Ankur_Biodata.pdf',
+                image: { type: 'jpeg', quality: 0.95 },
+                html2canvas: { scale: 2, useCORS: true, windowWidth: 820, scrollY: 0 },
+                jsPDF: { unit: 'px', format: [794, 1123], orientation: 'portrait', hotfixes: ['px_scaling'] },
+                pagebreak: { mode: 'avoid-all' }
+            }).from(document.getElementById('biodata')).save().catch(function () {
+                window.print();
+            }).finally(function () {
+                document.body.classList.remove('pdf-mode');
+                btn.disabled = false;
+                btn.textContent = '⬇ Download PDF';
+            });
         }
     </script>
 </body>
