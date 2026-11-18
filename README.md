@@ -1,6 +1,6 @@
 # Bio-Data - Aditya Ankur
 
-A beautiful, modern, and responsive bio-data website with an elegant autumn theme.
+A simple one-page marriage biodata for Aditya Ankur, with a Download PDF button.
 
 ## Features
 
