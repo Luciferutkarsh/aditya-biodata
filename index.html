@@ -314,7 +314,7 @@
                     <div class="row"><span class="k">Caste</span><span class="c">:</span><span class="v">Rauniyar Baniya</span></div>
                 </div>
                 <div class="photo">
-                    <img src="./profile.jpg" alt="Aditya Ankur">
+                    <img src="./profile.jpg?v=2" alt="Aditya Ankur">
                 </div>
             </div>
 
@@ -329,7 +329,7 @@
             <div class="row"><span class="k">Father's Occupation</span><span class="c">:</span><span class="v">Reputed Businessman</span></div>
             <div class="row"><span class="k">Mother's Name</span><span class="c">:</span><span class="v">Mrs. Payal</span></div>
             <div class="row"><span class="k">Mother's Occupation</span><span class="c">:</span><span class="v">Homemaker</span></div>
-            <div class="row"><span class="k">Brother</span><span class="c">:</span><span class="v">Utkarsh Umang (Younger) – M.Tech (AI &amp; DS), IIT Patna; SWE III at Google</span></div>
+            <div class="row"><span class="k">Brother</span><span class="c">:</span><span class="v">Utkarsh Umang (Younger) – SWE III at Google</span></div>
             <div class="row"><span class="k">Family Type</span><span class="c">:</span><span class="v">Nuclear, Traditional, Well-Educated</span></div>
 
             <h2>Contact Details <span class="hi">संपर्क</span></h2>
@@ -341,34 +341,61 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
-        function downloadPDF() {
-            // If the PDF library could not load, fall back to the browser's "Save as PDF"
-            if (typeof html2pdf === 'undefined') {
+        async function downloadPDF() {
+            // If the PDF libraries could not load, fall back to the browser's "Save as PDF"
+            if (typeof html2canvas === 'undefined' || !window.jspdf) {
                 window.print();
                 return;
             }
             const btn = document.getElementById('downloadBtn');
             btn.disabled = true;
             btn.textContent = 'Preparing PDF...';
+
+            // Render a copy of the biodata at a fixed A4 width, pinned to the top-left,
+            // so the result is the same on every phone and computer.
+            const holder = document.createElement('div');
+            holder.style.cssText = 'position:absolute;left:0;top:0;width:794px;z-index:-1;';
+            const copy = document.getElementById('biodata').cloneNode(true);
+            copy.removeAttribute('id');
+            holder.appendChild(copy);
+            document.body.appendChild(holder);
             document.body.classList.add('pdf-mode');
+            const scrollPos = window.scrollY;
             window.scrollTo(0, 0);
 
-            html2pdf().set({
-                margin: 0,
-                filename: 'Aditya_Ankur_Biodata.pdf',
-                image: { type: 'jpeg', quality: 0.95 },
-                html2canvas: { scale: 2, useCORS: true, windowWidth: 820, scrollY: 0 },
-                jsPDF: { unit: 'px', format: [794, 1123], orientation: 'portrait', hotfixes: ['px_scaling'] },
-                pagebreak: { mode: 'avoid-all' }
-            }).from(document.getElementById('biodata')).save().catch(function () {
+            try {
+                const canvas = await html2canvas(copy, {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: '#fffaf0',
+                    width: 794,
+                    windowWidth: 794,
+                    scrollX: 0,
+                    scrollY: 0,
+                    x: 0,
+                    y: 0
+                });
+                const pdf = new window.jspdf.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+                const pageW = 210, pageH = 297;
+                let w = pageW, h = canvas.height * pageW / canvas.width;
+                if (h > pageH) { h = pageH; w = canvas.width * pageH / canvas.height; }
+                pdf.setFillColor(255, 250, 240);
+                pdf.rect(0, 0, pageW, pageH, 'F');
+                pdf.addImage(canvas.toDataURL('image/jpeg', 0.95), 'JPEG', (pageW - w) / 2, (pageH - h) / 2, w, h);
+                pdf.save('Aditya_Ankur_Biodata.pdf');
+            } catch (e) {
+                console.error(e);
                 window.print();
-            }).finally(function () {
+            } finally {
+                holder.remove();
                 document.body.classList.remove('pdf-mode');
+                window.scrollTo(0, scrollPos);
                 btn.disabled = false;
                 btn.textContent = '⬇ Download PDF';
-            });
+            }
         }
     </script>
 </body>
